@@ -18,7 +18,7 @@ export const  CardSection = () => {
         <>
          {QuizData?.map(i => {
             return (
-                <div className="my-4">
+                <div className="my-4" key = {i?.id}>
                     <Card className="w-[350px]">
                     <CardHeader>
                         <CardTitle className="font-bold text-2xl"> {i?.id}) {i?.title} </CardTitle>
