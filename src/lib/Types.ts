@@ -1,6 +1,7 @@
    export interface QuizOptions {
        id : number,
-       value :  string     
+       value :  string,
+       placeholder? : string     
    }
 
    export interface SingleMcqProps {

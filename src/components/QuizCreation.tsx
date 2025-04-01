@@ -1,6 +1,4 @@
 
-
-
 import React, { useState } from "react"
 import { Button } from "./ui/button"
 import { Card } from "./ui/card"
@@ -9,10 +7,10 @@ import { SingleMcqProps } from "../lib/Types"
 
 export const QuizCreation = () => {
 
-    const [NewTitle, setNewTitle] = useState('');
+    // const [NewTitle, setNewTitle] = useState('');
     const [newid, setnewid] = useState(1);
     const [NewMcq, setnewMcq] = useState<SingleMcqProps[]>([
-        { id: 0, question: "", ansoptions: [{ id: 0, value: "" }] }
+        { id: 0, question: "", ansoptions: [{ id: 0, value: "" , placeholder : "" }] }
     ]);
 
     const Questionhandler = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
@@ -62,7 +60,6 @@ export const QuizCreation = () => {
         console.log('check all ', NewMcq);
     }
 
-
     return (
         <div className="flex justify-center">
 
@@ -90,8 +87,8 @@ export const QuizCreation = () => {
                                                     <div className="py-2">
                                                         <Input type="text"
                                                             value={i?.value || "" }
+                                                             placeholder={` Enter ${i?.id + 1} Option `}
                                                             onChange={(e) => inputoptionhandler(e,i?.id,q?.id)}
-                                                            // optindex , qindex
                                                         />
                                                     </div>
                                                    
@@ -112,12 +109,15 @@ export const QuizCreation = () => {
                 })}
 
                 <div className="flex justify-center">
-                    <Button className="bg-red-600" variant="outline" onClick={NextQuestionHandler}> Next Question </Button>
+                    <Button className="bg-red-600 px-8" variant="outline" onClick={NextQuestionHandler}> 
+                        Add Question+ </Button>
+                </div>
+
+                <div className="flex justify-end">
+                    <Button className="bg-blue-600" onClick={checkallhandler}> Preview </Button>
                 </div>
 
             </Card>
-
-            <button onClick={checkallhandler}> check all </button>
 
         </div>
     )
